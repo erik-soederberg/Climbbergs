@@ -1,4 +1,7 @@
+using Climbbergs.Application.Services;
+using Climbbergs.Core.Interfaces;
 using Climbbergs.Infrastructure.Data;
+using Climbbergs.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +14,14 @@ builder.Services.AddSwaggerGen();
 // Configure Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register Repositories
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductInterestRepository, ProductInterestRepository>();
+
+// Register Services
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductInterestService, ProductInterestService>();
 
 // Configure CORS for frontend
 builder.Services.AddCors(options =>
