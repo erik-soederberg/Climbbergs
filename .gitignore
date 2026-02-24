@@ -127,3 +127,8 @@ coverage/
 *.bak
 *.backup
 *~
+
+# Keep template, ignore local settings
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
