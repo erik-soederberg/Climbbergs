@@ -14,6 +14,14 @@ public class ApplicationDbContext : DbContext
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<ProductImage> ProductImages => Set<ProductImage>();
     public DbSet<ProductInterest> ProductInterests => Set<ProductInterest>();
+    
+    public DbSet<HangboardBase> HangboardBases { get; set; }
+
+    public DbSet<GripType> GripTypes { get; set; }
+    
+    public DbSet<HangboardDesign> HangboardDesigns { get; set; }
+    
+    public DbSet<DesignGrip> DesignGrips { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -125,7 +133,105 @@ public class ApplicationDbContext : DbContext
                 CategoryId = 3,
                 CreatedAt = new DateTime(2026, 2, 12, 10, 0, 0, DateTimeKind.Utc)
             }
+            
+            
         );
+        
+        modelBuilder.Entity<HangboardBase>()
+            .Property(h => h.BasePrice)
+            .HasPrecision(18, 2);
 
+        modelBuilder.Entity<HangboardDesign>()
+            .Property(h => h.TotalPrice)
+            .HasPrecision(18, 2);
+            
+        modelBuilder.Entity<HangboardBase>().HasData(
+                new HangboardBase 
+                { 
+                    Id = 1, 
+                    Name = "Standard Hangboard", 
+                    Width = 60,
+                    Height = 20,
+                    Material = "Custom",
+                    BasePrice = 0,  // Price determined on quote
+                    ImageUrl = "/images/hangboard-blank.jpg",
+                    Description = "Design your perfect training board"
+                }
+                
+            );
+        modelBuilder.Entity<GripType>().HasData(
+            new GripType
+            {
+                Id = 1,
+                Name = "Jug",
+                Description = "Large positive hold, great for beginners",
+                IconUrl = "/icons/jug.svg",
+                Color = "#22c55e",
+                HasAngle = false,
+                HasDepth = false,
+                MinDepth = 0,
+                MaxDepth = 0
+            },
+            new GripType
+            {
+                Id = 2,
+                Name = "Crimp",
+                Description = "Small edge hold for finger strength",
+                IconUrl = "/icons/crimp.svg",
+                Color = "#ef4444",
+                HasAngle = false,
+                HasDepth = true,
+                MinDepth = 5,
+                MaxDepth = 20
+            },
+            new GripType 
+            { 
+            Id = 3, 
+            Name = "Sloper", 
+            Description = "Rounded hold requiring open hand grip",
+            IconUrl = "/icons/sloper.svg",
+            Color = "#3b82f6",
+            HasAngle = true,
+            HasDepth = false,
+            MinDepth = 0,
+            MaxDepth = 0 
+            },
+            new GripType
+            {
+                Id = 4, 
+                Name = "Pocket", 
+                Description = "One or two finger pocket hold",
+                IconUrl = "/icons/pocket.svg",
+                Color = "#a855f7",
+                HasAngle = false,
+                HasDepth = true,
+                MinDepth = 10,
+                MaxDepth = 40
+            },
+            new GripType
+            {
+                Id = 5, 
+                Name = "Pinch", 
+                Description = "Pinch grip for thumb opposition",
+                IconUrl = "/icons/pinch.svg",
+                Color = "#f59e0b",
+                HasAngle = false,
+                HasDepth = false,
+                MinDepth = 0,
+                MaxDepth = 0
+            },
+            new GripType
+                {
+                    Id = 6, 
+                    Name = "Edge", 
+                    Description = "Flat edge for various grip positions",
+                    IconUrl = "/icons/edge.svg",
+                    Color = "#8b5cf6",
+                    HasAngle = false,
+                    HasDepth = true,
+                    MinDepth = 5,
+                    MaxDepth = 25
+                }
+        );
     }
 }
