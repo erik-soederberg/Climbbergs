@@ -44,4 +44,53 @@ export const interestApi = {
     },
 };
 
+// 🆕 HANGBOARD DESIGNER API
+export const hangboardApi = {
+    // Get all hangboard bases
+    getBases: async () => {
+        const response = await api.get('/hangboardbases');
+        return response.data;
+    },
+
+    // Get all grip types
+    getGripTypes: async () => {
+        const response = await api.get('/griptypes');
+        return response.data;
+    },
+
+    // Save a design
+    saveDesign: async (design) => {
+        const response = await api.post('/hangboarddesigns', design);
+        return response.data;
+    },
+
+    // Get design by ID
+    getDesignById: async (id) => {
+        const response = await api.get(`/hangboarddesigns/${id}`);
+        return response.data;
+    },
+
+    // Get designs by session ID
+    getDesignsBySession: async (sessionId) => {
+        const response = await api.get(`/hangboarddesigns/session/${sessionId}`);
+        return response.data;
+    },
+    // Get recent designs (for gallery)
+    getRecentDesigns: async (count = 10) => {
+        const response = await api.get(`/hangboarddesigns/recent?count=${count}`);
+        return response.data;
+    },
+
+    // Update design
+    updateDesign: async (id, design) => {
+        const response = await api.put(`/hangboarddesigns/${id}`, design);
+        return response.data;
+    },
+
+    // Delete design
+    deleteDesign: async (id) => {
+        await api.delete(`/hangboarddesigns/${id}`);
+    },
+};
+
 export default api;

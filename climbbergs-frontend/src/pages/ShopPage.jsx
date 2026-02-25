@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { productApi } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
-export default function HomePage() {
+export default function ShopPage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -40,10 +40,7 @@ export default function HomePage() {
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <p className="text-red-600 mb-4">{error}</p>
-                    <button
-                        onClick={loadProducts}
-                        className="btn-primary"
-                    >
+                    <button onClick={loadProducts} className="btn-primary">
                         Try Again
                     </button>
                 </div>
@@ -52,35 +49,40 @@ export default function HomePage() {
     }
 
     return (
-        <div className="min-h-screen">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                        Gear Up for Your Next Adventure
+        <div className="min-h-screen bg-gray-50">
+            {/* Hero */}
+            <div className="bg-white border-b">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+                    <h1 className="text-5xl font-bold mb-4">
+                        Climbing Gear & Apparel
                     </h1>
-                    <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto">
-                        Discover premium climbing gear designed for those who dare to reach new heights
+                    <p className="text-xl text-gray-600">
+                        Premium products for climbers, by climbers
                     </p>
-                    <a href="#products" className="btn-accent inline-block">
-                        Explore Products
-                    </a>
                 </div>
             </div>
 
-            {/* Products Section */}
-            <div id="products" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                {/* Section Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                        Our Collection
-                    </h2>
-                    <p className="text-xl text-gray-600">
-                        Click on any product to show your interest!
-                    </p>
+            {/* CTA to Builder */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="bg-primary-50 border border-primary-200 rounded-lg p-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div>
+                            <h3 className="text-xl font-bold text-primary-900 mb-2">
+                                Want a Custom Hangboard?
+                            </h3>
+                            <p className="text-primary-700">
+                                Design your perfect training board with our interactive builder
+                            </p>
+                        </div>
+                        <a href="/" className="btn-primary whitespace-nowrap">
+                            Build Now 🎨
+                        </a>
+                    </div>
                 </div>
+            </div>
 
-                {/* Product Grid */}
+            {/* Products Grid */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
                 {products.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {products.map((product) => (
@@ -92,21 +94,6 @@ export default function HomePage() {
                         <p className="text-gray-500 text-lg">No products available yet.</p>
                     </div>
                 )}
-            </div>
-
-            {/* CTA Section */}
-            <div className="bg-gray-100 py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                        Can't Find What You're Looking For?
-                    </h2>
-                    <p className="text-xl text-gray-600 mb-8">
-                        Let us know what gear you need and we'll make it happen
-                    </p>
-                    <button className="btn-primary">
-                        Contact Us
-                    </button>
-                </div>
             </div>
         </div>
     );
