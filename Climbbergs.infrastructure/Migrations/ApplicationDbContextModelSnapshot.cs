@@ -81,6 +81,273 @@ namespace Climbbergs.infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Climbbergs.Core.Entities.DesignGrip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("Angle")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Depth")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("GripTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("HangboardDesignId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Height")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("PositionX")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("PositionY")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("Rotation")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Width")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GripTypeId");
+
+                    b.HasIndex("HangboardDesignId");
+
+                    b.ToTable("DesignGrips");
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.GripType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HasAngle")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HasDepth")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("IconUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("MaxDepth")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("MinDepth")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("PriceModifier")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GripTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Color = "#22c55e",
+                            Description = "Large positive hold, great for beginners",
+                            HasAngle = false,
+                            HasDepth = false,
+                            IconUrl = "/icons/jug.svg",
+                            MaxDepth = 0m,
+                            MinDepth = 0m,
+                            Name = "Jug",
+                            PriceModifier = 0m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Color = "#ef4444",
+                            Description = "Small edge hold for finger strength",
+                            HasAngle = false,
+                            HasDepth = true,
+                            IconUrl = "/icons/crimp.svg",
+                            MaxDepth = 20m,
+                            MinDepth = 5m,
+                            Name = "Crimp",
+                            PriceModifier = 0m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Color = "#3b82f6",
+                            Description = "Rounded hold requiring open hand grip",
+                            HasAngle = true,
+                            HasDepth = false,
+                            IconUrl = "/icons/sloper.svg",
+                            MaxDepth = 0m,
+                            MinDepth = 0m,
+                            Name = "Sloper",
+                            PriceModifier = 0m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Color = "#a855f7",
+                            Description = "One or two finger pocket hold",
+                            HasAngle = false,
+                            HasDepth = true,
+                            IconUrl = "/icons/pocket.svg",
+                            MaxDepth = 40m,
+                            MinDepth = 10m,
+                            Name = "Pocket",
+                            PriceModifier = 0m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Color = "#f59e0b",
+                            Description = "Pinch grip for thumb opposition",
+                            HasAngle = false,
+                            HasDepth = false,
+                            IconUrl = "/icons/pinch.svg",
+                            MaxDepth = 0m,
+                            MinDepth = 0m,
+                            Name = "Pinch",
+                            PriceModifier = 0m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Color = "#8b5cf6",
+                            Description = "Flat edge for various grip positions",
+                            HasAngle = false,
+                            HasDepth = true,
+                            IconUrl = "/icons/edge.svg",
+                            MaxDepth = 25m,
+                            MinDepth = 5m,
+                            Name = "Edge",
+                            PriceModifier = 0m
+                        });
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.HangboardBase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("BasePrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Height")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Material")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Width")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HangboardBases");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BasePrice = 0m,
+                            Description = "Design your perfect training board",
+                            Height = 20m,
+                            ImageUrl = "/images/hangboard-blank.jpg",
+                            Material = "Custom",
+                            Name = "Standard Hangboard",
+                            Width = 60m
+                        });
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.HangboardDesign", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConfigurationJson")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ContactEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ContactName")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("HangboardBaseId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsOrderPlaced")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("numeric(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HangboardBaseId");
+
+                    b.ToTable("HangboardDesigns");
+                });
+
             modelBuilder.Entity("Climbbergs.Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -249,6 +516,36 @@ namespace Climbbergs.infrastructure.Migrations
                     b.Navigation("ParentCategory");
                 });
 
+            modelBuilder.Entity("Climbbergs.Core.Entities.DesignGrip", b =>
+                {
+                    b.HasOne("Climbbergs.Core.Entities.GripType", "GripType")
+                        .WithMany("DesignGrips")
+                        .HasForeignKey("GripTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Climbbergs.Core.Entities.HangboardDesign", "HangboardDesign")
+                        .WithMany("Grips")
+                        .HasForeignKey("HangboardDesignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GripType");
+
+                    b.Navigation("HangboardDesign");
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.HangboardDesign", b =>
+                {
+                    b.HasOne("Climbbergs.Core.Entities.HangboardBase", "HangboardBase")
+                        .WithMany("Designs")
+                        .HasForeignKey("HangboardBaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HangboardBase");
+                });
+
             modelBuilder.Entity("Climbbergs.Core.Entities.Product", b =>
                 {
                     b.HasOne("Climbbergs.Core.Entities.Category", "Category")
@@ -287,6 +584,21 @@ namespace Climbbergs.infrastructure.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.GripType", b =>
+                {
+                    b.Navigation("DesignGrips");
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.HangboardBase", b =>
+                {
+                    b.Navigation("Designs");
+                });
+
+            modelBuilder.Entity("Climbbergs.Core.Entities.HangboardDesign", b =>
+                {
+                    b.Navigation("Grips");
                 });
 
             modelBuilder.Entity("Climbbergs.Core.Entities.Product", b =>

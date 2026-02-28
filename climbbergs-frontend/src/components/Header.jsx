@@ -1,6 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+    const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
+
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -15,26 +19,51 @@ export default function Header() {
             </span>
                     </Link>
 
-                    {/* Navigation - Add more links as needed */}
+                    {/* Navigation */}
                     <div className="hidden md:flex space-x-8">
                         <Link
                             to="/"
-                            className="text-gray-700 hover:text-primary-500 font-medium transition-colors"
+                            className={`font-medium transition-colors ${
+                                isActive('/')
+                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
+                                    : 'text-gray-700 hover:text-primary-500'
+                            }`}
                         >
-                            Products
+                            🎨 Build Hangboard
                         </Link>
-                        <a
-                            href="#about"
-                            className="text-gray-700 hover:text-primary-500 font-medium transition-colors"
+
+                        <Link
+                            to="/shop"
+                            className={`font-medium transition-colors ${
+                                isActive('/shop')
+                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
+                                    : 'text-gray-700 hover:text-primary-500'
+                            }`}
                         >
-                            About
-                        </a>
-                        <a
-                            href="#contact"
-                            className="text-gray-700 hover:text-primary-500 font-medium transition-colors"
+                            🛍️ Shop
+                        </Link>
+
+                        <Link
+                            to="/gallery"
+                            className={`font-medium transition-colors ${
+                                isActive('/gallery')
+                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
+                                    : 'text-gray-700 hover:text-primary-500'
+                            }`}
                         >
-                            Contact
-                        </a>
+                            🖼️ Gallery
+                        </Link>
+
+                        <Link
+                            to="/my-designs"
+                            className={`font-medium transition-colors ${
+                                isActive('/my-designs')
+                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
+                                    : 'text-gray-700 hover:text-primary-500'
+                            }`}
+                        >
+                            📋 My Designs
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}

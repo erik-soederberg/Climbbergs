@@ -23,6 +23,14 @@ builder.Services.AddScoped<IProductInterestRepository, ProductInterestRepository
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductInterestService, ProductInterestService>();
 
+// 🆕 Hangboard Designer Repositories
+builder.Services.AddScoped<IHangboardDesignRepository, HangboardDesignRepository>();
+builder.Services.AddScoped<IGripTypeRepository, GripTypeRepository>();
+builder.Services.AddScoped<IHangboardBaseRepository, HangboardBaseRepository>();
+
+// 🆕 Hangboard Designer Service
+builder.Services.AddScoped<IHangboardDesignService, HangboardDesignService>();
+
 // Configure CORS for frontend
 builder.Services.AddCors(options =>
 {

@@ -51,9 +51,6 @@ export default function HomePage() {
         );
     }
 
-    // Hitta Grip Reaper-produkten
-    const brush = products.find(p => p.name === "The Grip reaper");
-
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
@@ -84,9 +81,11 @@ export default function HomePage() {
                 </div>
 
                 {/* Product Grid */}
-                {brush ? (
+                {products.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <ProductCard product={brush} />
+                        {products.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
                     </div>
                 ) : (
                     <div className="text-center py-20">
