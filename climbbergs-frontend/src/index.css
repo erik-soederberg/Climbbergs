@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom scrollbar */
+/* Minimal scrollbar */
 @layer utilities {
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
@@ -13,31 +13,37 @@
     }
 }
 
-/* Base styles */
+/* Base styles - minimal */
 body {
-    @apply bg-gray-50 text-gray-900;
-    font-family: 'Inter', sans-serif;
+    @apply bg-white text-gray-900;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-/* Custom button styles - EASY TO CUSTOMIZE */
+/* Minimal button styles */
 .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg;
+    @apply bg-gray-900 hover:bg-gray-800 text-white font-normal py-3 px-8 rounded-none transition-colors duration-200;
 }
 
 .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+    @apply border border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 font-normal py-3 px-8 rounded-none transition-colors duration-200;
 }
 
 .btn-accent {
-    @apply bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg;
+    @apply bg-gray-900 hover:bg-gray-700 text-white font-normal py-3 px-8 rounded-none transition-colors duration-200;
 }
 
-/* Card styles */
+/* Minimal card */
 .card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white border border-gray-200 rounded-none transition-all duration-200;
 }
 
-/* Product image hover effect */
-.product-image {
-    @apply transition-transform duration-300 hover:scale-105;
+.card:hover {
+    @apply border-gray-900;
+}
+
+/* Remove default focus rings, add minimal ones */
+*:focus {
+    @apply outline-none ring-1 ring-gray-900 ring-offset-2;
 }

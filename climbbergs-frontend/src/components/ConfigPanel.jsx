@@ -19,31 +19,30 @@ export default function ConfigPanel({
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-6">Configuration</h3>
+        <div className="bg-white relative pl-20">
+            <h3 className="text-sm font-normal mb-8 tracking-wide">PROPERTIES</h3>
 
             {/* Board Info */}
-            <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-semibold mb-2">Board Specs</h4>
-                <div className="space-y-1 text-sm">
-                    <p><span className="font-medium">Size:</span> 60 x 20 cm</p>
-                    <p><span className="font-medium">Material:</span> Custom</p>
-                    <p><span className="font-medium">Grips:</span> {gripCount}</p>
+            <div className="mb-12 pb-8 border-b border-gray-200">
+                <div className="space-y-2 text-xs text-gray-500 font-light">
+                    <p>60 × 20 CM</p>
+                    <p>CUSTOM MATERIAL</p>
+                    <p>{gripCount} GRIPS</p>
                 </div>
             </div>
 
             {/* Selected Grip Properties */}
             {selectedObject ? (
-                <div className="mb-6 p-4 bg-primary-50 rounded-lg border border-primary-200">
-                    <h4 className="font-semibold mb-3 text-primary-900">
-                        Selected: {selectedObject.gripTypeName}
+                <div className="mb-12 pb-8 border-b border-gray-200">
+                    <h4 className="text-xs font-normal mb-6 tracking-wide">
+                        {selectedObject.gripTypeName.toUpperCase()}
                     </h4>
 
-                    {/* Angle slider for slopers */}
+                    {/* Angle slider */}
                     {selectedObject.hasAngle && (
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">
-                                Angle: {selectedObject.angle}°
+                        <div className="mb-6">
+                            <label className="block text-xs text-gray-500 mb-3">
+                                ANGLE: {selectedObject.angle}°
                             </label>
                             <input
                                 type="range"
@@ -51,20 +50,16 @@ export default function ConfigPanel({
                                 max="90"
                                 value={selectedObject.angle || 45}
                                 onChange={(e) => handleAngleChange(e.target.value)}
-                                className="w-full"
+                                className="w-full h-px bg-gray-300 appearance-none slider"
                             />
-                            <div className="flex justify-between text-xs text-gray-600 mt-1">
-                                <span>0° (flat)</span>
-                                <span>90° (vertical)</span>
-                            </div>
                         </div>
                     )}
 
-                    {/* Depth slider for pockets/crimps */}
+                    {/* Depth slider */}
                     {selectedObject.hasDepth && (
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">
-                                Depth: {selectedObject.depth?.toFixed(1) || 0} mm
+                        <div className="mb-6">
+                            <label className="block text-xs text-gray-500 mb-3">
+                                DEPTH: {selectedObject.depth?.toFixed(1) || 0} MM
                             </label>
                             <input
                                 type="range"
@@ -73,54 +68,31 @@ export default function ConfigPanel({
                                 step="0.5"
                                 value={selectedObject.depth || selectedObject.minDepth}
                                 onChange={(e) => handleDepthChange(e.target.value)}
-                                className="w-full"
+                                className="w-full h-px bg-gray-300 appearance-none slider"
                             />
-                            <div className="flex justify-between text-xs text-gray-600 mt-1">
-                                <span>{selectedObject.minDepth}mm</span>
-                                <span>{selectedObject.maxDepth}mm</span>
-                            </div>
                         </div>
                     )}
-
-                    <p className="text-xs text-gray-600 mt-3">
-                        Drag grip to move • Use handles to resize/rotate
-                    </p>
                 </div>
             ) : (
-                <div className="mb-6 p-4 bg-gray-50 rounded-lg text-center text-gray-500 text-sm">
-                    Select a grip to adjust its properties
+                <div className="mb-12 pb-8 border-b border-gray-200 text-center">
+                    <p className="text-xs text-gray-400 font-light">
+                        SELECT A GRIP
+                    </p>
                 </div>
             )}
-
-            {/* Price Display */}
-            <div className="mb-6 p-4 bg-accent-light rounded-lg">
-                <div className="flex justify-between items-center">
-                    <span className="font-semibold">Estimated Price:</span>
-                    <span className="text-2xl font-bold text-gray-900">
-            {basePrice > 0 ? `$${basePrice.toFixed(2)}` : 'Contact for quote'}
-          </span>
-                </div>
-                <p className="text-xs text-gray-600 mt-2">
-                    All grips included • No extra charges
-                </p>
-            </div>
 
             {/* Save Button */}
             <button
                 onClick={onSave}
                 disabled={gripCount === 0}
-                className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
+                className={`w-full text-sm tracking-wide ${
                     gripCount === 0
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'btn-accent'
+                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed py-4'
+                        : 'btn-primary'
                 }`}
             >
-                {gripCount === 0 ? 'Add grips to save' : 'Save & Get Quote'}
+                {gripCount === 0 ? 'ADD GRIPS' : 'REQUEST QUOTE'}
             </button>
-
-            <p className="text-xs text-center text-gray-500 mt-3">
-                We'll contact you within 24 hours with a detailed quote
-            </p>
         </div>
     );
 }

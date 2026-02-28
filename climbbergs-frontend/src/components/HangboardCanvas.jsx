@@ -99,7 +99,7 @@ export default function HangboardCanvas({
     }, [canvasWidth, canvasHeight]); // ✅ Don't include selectedGrip in deps
 
     const addGrip = (x, y, grip) => { // ✅ Accept grip as parameter
-        console.log('🎯 addGrip called!', { x, y, grip });
+        console.log('🎯 addGrip called!', {x, y, grip});
 
         if (!grip || !fabricCanvasRef.current) {
             console.log('❌ Early return - missing grip or canvas');
@@ -212,43 +212,34 @@ export default function HangboardCanvas({
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">Design Your Board</h3>
-                <div className="space-x-2">
+        <div className="bg-white">
+            <div className="flex justify-between items-center mb-8">
+                <h3 className="text-sm font-normal tracking-wide">CANVAS</h3>
+                <div className="space-x-4">
                     <button
                         onClick={deleteSelected}
-                        className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
+                        className="text-xs text-gray-500 hover:text-gray-900 transition-colors"
                     >
-                        Delete Selected
+                        DELETE
                     </button>
                     <button
                         onClick={clearAll}
-                        className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 text-sm"
+                        className="text-xs text-gray-500 hover:text-gray-900 transition-colors"
                     >
-                        Clear All
+                        CLEAR
                     </button>
                 </div>
             </div>
 
-            <div className="border-4 border-gray-300 rounded-lg overflow-hidden">
-                <canvas ref={canvasRef} style={{ cursor: 'crosshair' }} />
-            </div>
-
-            <div className="mt-4 text-sm text-gray-600">
-                <p>💡 Tips:</p>
-                <ul className="list-disc list-inside space-y-1 mt-2">
-                    <li>Click a grip type, then click on the board to place it</li>
-                    <li>Drag grips to reposition them</li>
-                    <li>Use corner handles to resize</li>
-                    <li>Rotate using the circular handle</li>
-                </ul>
+            {/* ✅ LÄGG TILL relative position här */}
+            <div className="border border-gray-200 relative">
+                <canvas ref={canvasRef} style={{ cursor: 'crosshair', display: 'block' }} />
             </div>
 
             {grips.length > 0 && (
-                <div className="mt-4 p-3 bg-green-50 rounded-lg">
-                    <p className="text-sm font-medium text-green-900">
-                        ✅ {grips.length} grip{grips.length !== 1 ? 's' : ''} placed
+                <div className="mt-8 text-center">
+                    <p className="text-xs text-gray-500 font-light">
+                        {grips.length} GRIP{grips.length !== 1 ? 'S' : ''} PLACED
                     </p>
                 </div>
             )}

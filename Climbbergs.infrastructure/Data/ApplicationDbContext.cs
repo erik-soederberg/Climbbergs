@@ -14,6 +14,11 @@ public class ApplicationDbContext : DbContext
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<ProductImage> ProductImages => Set<ProductImage>();
     public DbSet<ProductInterest> ProductInterests => Set<ProductInterest>();
+    
+    public DbSet<HangboardBase> HangboardBases { get; set; }
+    public DbSet<GripType> GripTypes { get; set; }
+    public DbSet<HangboardDesign> HangboardDesigns { get; set; }
+    public DbSet<DesignGrip> DesignGrips { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

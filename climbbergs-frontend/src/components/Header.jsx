@@ -6,70 +6,65 @@ export default function Header() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <header className="bg-white shadow-sm sticky top-0 z-50">
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <header className="bg-white border-b border-gray-200">
+            <nav className="max-w-6xl mx-auto px-8 py-6">
                 <div className="flex justify-between items-center">
-                    {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-xl">C</span>
-                        </div>
-                        <span className="text-2xl font-bold text-gray-900">
-              Climb<span className="text-primary-500">bergs</span>
-            </span>
+                    {/* Minimal Logo */}
+                    <Link to="/" className="text-xl font-light tracking-wide text-gray-900">
+                        CLIMBBERGS
                     </Link>
 
-                    {/* Navigation */}
-                    <div className="hidden md:flex space-x-8">
+                    {/* Minimal Navigation */}
+                    <div className="hidden md:flex space-x-12">
                         <Link
                             to="/"
-                            className={`font-medium transition-colors ${
+                            className={`text-sm font-light tracking-wide transition-colors ${
                                 isActive('/')
-                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
-                                    : 'text-gray-700 hover:text-primary-500'
+                                    ? 'text-gray-900'
+                                    : 'text-gray-500 hover:text-gray-900'
                             }`}
                         >
-                            🎨 Build Hangboard
+                            BUILDER
                         </Link>
 
                         <Link
                             to="/shop"
-                            className={`font-medium transition-colors ${
+                            className={`text-sm font-light tracking-wide transition-colors ${
                                 isActive('/shop')
-                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
-                                    : 'text-gray-700 hover:text-primary-500'
+                                    ? 'text-gray-900'
+                                    : 'text-gray-500 hover:text-gray-900'
                             }`}
                         >
-                            🛍️ Shop
+                            SHOP
                         </Link>
 
                         <Link
                             to="/gallery"
-                            className={`font-medium transition-colors ${
+                            className={`text-sm font-light tracking-wide transition-colors ${
                                 isActive('/gallery')
-                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
-                                    : 'text-gray-700 hover:text-primary-500'
+                                    ? 'text-gray-900'
+                                    : 'text-gray-500 hover:text-gray-900'
                             }`}
                         >
-                            🖼️ Gallery
+                            GALLERY
                         </Link>
 
                         <Link
                             to="/my-designs"
-                            className={`font-medium transition-colors ${
+                            className={`text-sm font-light tracking-wide transition-colors ${
                                 isActive('/my-designs')
-                                    ? 'text-primary-600 border-b-2 border-primary-600 pb-1'
-                                    : 'text-gray-700 hover:text-primary-500'
+                                    ? 'text-gray-900'
+                                    : 'text-gray-500 hover:text-gray-900'
                             }`}
                         >
-                            📋 My Designs
+                            MY DESIGNS
                         </Link>
                     </div>
 
                     {/* Mobile menu button */}
-                    <button className="md:hidden text-gray-700">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <button className="md:hidden text-gray-900">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                         </svg>
                     </button>
                 </div>

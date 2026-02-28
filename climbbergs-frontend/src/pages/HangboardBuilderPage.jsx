@@ -128,37 +128,23 @@ export default function HangboardBuilderPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                        Design Your Perfect Hangboard
+        <div className="min-h-screen bg-white">
+            {/* Minimal Hero */}
+            <div className="border-b border-gray-200">
+                <div className="max-w-6xl mx-auto px-8 py-24 text-center">
+                    <h1 className="text-5xl md:text-6xl font-light mb-6 tracking-tight">
+                        Design Your Hangboard
                     </h1>
-                    <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto">
-                        Custom training boards built for your climbing goals
+                    <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto">
+                        Precision-crafted training boards built to your specifications
                     </p>
-                    <div className="flex justify-center gap-8 text-white">
-                        <div>
-                            <div className="text-3xl font-bold">{gripTypes.length}</div>
-                            <div className="text-primary-200">Grip Types</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold">100%</div>
-                            <div className="text-primary-200">Custom</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold">{grips.length}</div>
-                            <div className="text-primary-200">Grips Added</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            {/* Builder Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    {/* Grip Palette - Left Column */}
+            {/* Builder Section - More Spacing */}
+            <div className="max-w-6xl mx-auto px-8 py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+                    {/* Grip Palette */}
                     <div className="lg:col-span-3">
                         <GripPalette
                             gripTypes={gripTypes}
@@ -167,7 +153,7 @@ export default function HangboardBuilderPage() {
                         />
                     </div>
 
-                    {/* Canvas - Middle Column */}
+                    {/* Canvas */}
                     <div className="lg:col-span-6">
                         <HangboardCanvas
                             gripTypes={gripTypes}
@@ -177,7 +163,7 @@ export default function HangboardBuilderPage() {
                         />
                     </div>
 
-                    {/* Config Panel - Right Column */}
+                    {/* Config Panel */}
                     <div className="lg:col-span-3">
                         <ConfigPanel
                             selectedObject={selectedObject}
@@ -190,53 +176,53 @@ export default function HangboardBuilderPage() {
                 </div>
             </div>
 
-            {/* Contact Modal */}
+            {/* Contact Modal - Minimal */}
             {showContactModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-lg max-w-md w-full p-6">
-                        <h2 className="text-2xl font-bold mb-4">Get Your Custom Quote</h2>
-                        <p className="text-gray-600 mb-6">
-                            Enter your contact info and we'll send you a detailed quote within 24 hours.
+                <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white max-w-md w-full p-12 border border-gray-200">
+                        <h2 className="text-2xl font-light mb-2">Request Quote</h2>
+                        <p className="text-sm text-gray-500 mb-8 font-light">
+                            We'll send you a detailed quote within 24 hours.
                         </p>
 
-                        <form onSubmit={handleSubmitDesign}>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">Name *</label>
+                        <form onSubmit={handleSubmitDesign} className="space-y-6">
+                            <div>
+                                <label className="block text-xs font-normal mb-2 tracking-wide text-gray-700">NAME</label>
                                 <input
                                     type="text"
                                     value={contactInfo.name}
                                     onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500"
+                                    className="w-full px-4 py-3 border border-gray-300 focus:border-gray-900 focus:ring-0 transition-colors"
                                     required
                                 />
                             </div>
 
-                            <div className="mb-6">
-                                <label className="block text-sm font-medium mb-2">Email *</label>
+                            <div>
+                                <label className="block text-xs font-normal mb-2 tracking-wide text-gray-700">EMAIL</label>
                                 <input
                                     type="email"
                                     value={contactInfo.email}
                                     onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500"
+                                    className="w-full px-4 py-3 border border-gray-300 focus:border-gray-900 focus:ring-0 transition-colors"
                                     required
                                 />
                             </div>
 
-                            <div className="flex gap-3">
+                            <div className="flex gap-4 pt-4">
                                 <button
                                     type="button"
                                     onClick={() => setShowContactModal(false)}
-                                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                                    className="flex-1 btn-secondary"
                                     disabled={saving}
                                 >
-                                    Cancel
+                                    CANCEL
                                 </button>
                                 <button
                                     type="submit"
-                                    className="flex-1 btn-accent"
+                                    className="flex-1 btn-primary"
                                     disabled={saving}
                                 >
-                                    {saving ? 'Saving...' : 'Submit Design'}
+                                    {saving ? 'SUBMITTING...' : 'SUBMIT'}
                                 </button>
                             </div>
                         </form>
@@ -244,5 +230,4 @@ export default function HangboardBuilderPage() {
                 </div>
             )}
         </div>
-    );
-}
+    );}

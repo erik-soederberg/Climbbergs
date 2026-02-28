@@ -26,10 +26,10 @@ public class GripTypesController : ControllerBase
             Description = g.Description,
             IconUrl = g.IconUrl,
             Color = g.Color,
-            HasAngle = g.HasAngle,
-            HasDepth = g.HasDepth,
-            MinDepth = g.MinDepth,
-            MaxDepth = g.MaxDepth
+            HasAngle = g.HasAngle,      // ✅ Dessa ska finnas
+            HasDepth = g.HasDepth,      // ✅
+            MinDepth = g.MinDepth,      // ✅
+            MaxDepth = g.MaxDepth       // ✅
         });
         return Ok(dtos);
     }
@@ -51,6 +51,7 @@ public class GripTypesController : ControllerBase
             HasDepth = gripType.HasDepth,
             MinDepth = gripType.MinDepth,
             MaxDepth = gripType.MaxDepth
+            // ❌ INGEN PriceModifier här!
         };
         return Ok(dto);
     }

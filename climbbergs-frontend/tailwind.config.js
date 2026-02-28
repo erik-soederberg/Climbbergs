@@ -7,28 +7,28 @@ export default {
     theme: {
         extend: {
             colors: {
-                // CUSTOMIZE YOUR COLORS HERE! 🎨
+                // Minimalistisk monokrom palett
                 primary: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    200: '#bae6fd',
-                    300: '#7dd3fc',
-                    400: '#38bdf8',
-                    500: '#22c55e',  // Main brand color
-                    600: '#22c55e',
-                    700: '#0369a1',
-                    800: '#075985',
-                    900: '#0c4a6e',
-                },  
+                    50: '#f9fafb',
+                    100: '#f3f4f6',
+                    200: '#e5e7eb',
+                    300: '#d1d5db',
+                    400: '#9ca3af',
+                    500: '#6b7280',  // Main gray
+                    600: '#4b5563',
+                    700: '#374151',
+                    800: '#1f2937',
+                    900: '#111827',
+                },
                 accent: {
-                    DEFAULT: '#f59e0b', // Orange accent
-                    light: '#fbbf24',
-                    dark: '#d97706',
+                    DEFAULT: '#111827', // Almost black for minimal accent
+                    light: '#374151',
+                    dark: '#000000',
                 }
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
-            }
+            },
         },
     },
     plugins: [],
