@@ -131,12 +131,12 @@ namespace Climbbergs.infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 4,
                             CategoryId = 1,
                             CreatedAt = new DateTime(2026, 2, 12, 10, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Waterproof climbing jacket for all conditions",
-                            Name = "Alpine Pro Jacket",
-                            Price = 299.99m,
+                            Description = "The best bouldering brush out there.",
+                            Name = "The Grip reaper",
+                            Price = 19.99m,
                             SKU = "JAC-001",
                             StockQuantity = 50
                         },
@@ -193,6 +193,17 @@ namespace Climbbergs.infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            AltText = "Grip Reaper Brush",
+                            DisplayOrder = 1,
+                            IsPrimary = true,
+                            ProductId = 4,
+                            Url = "/images/climbbergs_kalkborste.png"
+                        });
                 });
 
             modelBuilder.Entity("Climbbergs.Core.Entities.ProductInterest", b =>

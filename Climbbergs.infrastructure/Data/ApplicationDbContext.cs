@@ -1,6 +1,7 @@
 using Climbbergs.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Climbbergs.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext
@@ -94,10 +95,10 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Product>().HasData(
             new Product
             {
-                Id = 1,
-                Name = "Alpine Pro Jacket",
-                Description = "Waterproof climbing jacket for all conditions",
-                Price = 299.99m,
+                Id = 4,
+                Name = "The Grip reaper",
+                Description = "The best bouldering brush out there.",
+                Price = 19.99m,
                 SKU = "JAC-001",
                 StockQuantity = 50,
                 CategoryId = 1,
@@ -126,6 +127,19 @@ public class ApplicationDbContext : DbContext
                 CreatedAt = new DateTime(2026, 2, 12, 10, 0, 0, DateTimeKind.Utc)
             }
         );
-
+        
+        modelBuilder.Entity<ProductImage>().HasData(
+            new ProductImage
+            {
+                Id = 2,
+                Url = "/images/climbbergs_kalkborste.png",
+                AltText = "Grip Reaper Brush",
+                IsPrimary = true,
+                DisplayOrder = 1,
+                ProductId = 4
+            }
+        );
     }
+    
 }
+

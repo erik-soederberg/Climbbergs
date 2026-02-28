@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
     // Placeholder image if no image URL
-    const imageUrl = product.imageUrls && product.imageUrls.length > 0
-        ? product.imageUrls[0]
-        : `https://via.placeholder.com/400x400/0ea5e9/ffffff?text=${encodeURIComponent(product.name)}`;
+    const imageUrl = product.imageUrls?.[0] || '/images/climbbergs_kalkborste.png';
 
     return (
         <Link to={`/product/${product.id}`} className="group">
