@@ -1,0 +1,122 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Wood grain background -->
+    <defs>
+        <pattern id="woodTexture" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <rect width="100" height="100" fill="#D4A574"/>
+            <path d="M0,10 Q25,8 50,10 T100,10" stroke="#B8956A" stroke-width="2" fill="none" opacity="0.4"/>
+            <path d="M0,25 Q25,23 50,25 T100,25" stroke="#C9A66B" stroke-width="1.5" fill="none" opacity="0.3"/>
+            <path d="M0,45 Q25,43 50,45 T100,45" stroke="#B8956A" stroke-width="2" fill="none" opacity="0.4"/>
+            <path d="M0,60 Q25,58 50,60 T100,60" stroke="#C9A66B" stroke-width="1" fill="none" opacity="0.2"/>
+            <path d="M0,80 Q25,78 50,80 T100,80" stroke="#B8956A" stroke-width="1.5" fill="none" opacity="0.3"/>
+            <path d="M0,95 Q25,93 50,95 T100,95" stroke="#C9A66B" stroke-width="1" fill="none" opacity="0.2"/>
+        </pattern>
+
+        <!-- Grid overlay -->
+        <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#8B6F47" stroke-width="0.5" opacity="0.3"/>
+        </pattern>
+    </defs>
+
+    <!-- Wood background -->
+    <rect width="600" height="200" fill="url(#woodTexture)"/>
+
+    <!-- Grid overlay -->
+    <rect width="600" height="200" fill="url(#grid)"/>
+
+    <!-- Board border -->
+    <rect x="5" y="5" width="590" height="190"
+          fill="none"
+          stroke="#8B6F47"
+          stroke-width="4"
+          rx="8"/>
+
+    <!-- Inner working area -->
+    <rect x="15" y="15" width="570" height="170"
+          fill="none"
+          stroke="#6B5437"
+          stroke-width="2"
+          stroke-dasharray="8,4"
+          rx="6"
+          opacity="0.6"/>
+
+    <!-- Mounting holes with realistic shadows -->
+    <g id="mountingHole">
+        <circle cx="30" cy="30" r="6" fill="#3A2F23"/>
+        <circle cx="30" cy="30" r="5" fill="#2A1F13"/>
+        <circle cx="29" cy="29" r="4" fill="#1A0F03" opacity="0.8"/>
+    </g>
+    <use href="#mountingHole"/>
+    <use href="#mountingHole" transform="translate(540, 0)"/>
+    <use href="#mountingHole" transform="translate(0, 140)"/>
+    <use href="#mountingHole" transform="translate(540, 140)"/>
+
+    <!-- Center guide lines -->
+    <line x1="300" y1="15" x2="300" y2="185"
+          stroke="#6B5437"
+          stroke-width="1"
+          stroke-dasharray="4,4"
+          opacity="0.4"/>
+    <line x1="15" y1="100" x2="585" y2="100"
+          stroke="#6B5437"
+          stroke-width="1"
+          stroke-dasharray="4,4"
+          opacity="0.4"/>
+
+    <!-- Example grips (to show users what's possible) -->
+    <!-- Jug (large positive hold) -->
+    <ellipse cx="150" cy="100" rx="35" ry="25"
+             fill="#5A8F5A"
+             stroke="#2F4F2F"
+             stroke-width="2"
+             opacity="0.3"/>
+    <path d="M 115,100 Q 150,115 185,100"
+          fill="none"
+          stroke="#2F4F2F"
+          stroke-width="1.5"
+          opacity="0.3"/>
+
+    <!-- Crimp (small edge) -->
+    <rect x="240" y="95" width="40" height="10"
+          rx="2"
+          fill="#CF4444"
+          stroke="#8B2323"
+          stroke-width="2"
+          opacity="0.3"/>
+
+    <!-- Sloper (rounded) -->
+    <ellipse cx="350" cy="100" rx="30" ry="20"
+             fill="#5A8FCF"
+             stroke="#2F4F8B"
+             stroke-width="2"
+             opacity="0.3"
+             transform="rotate(-15 350 100)"/>
+
+    <!-- Pocket -->
+    <circle cx="450" cy="100" r="18"
+            fill="#9B5ACF"
+            stroke="#5B2F8B"
+            stroke-width="2"
+            opacity="0.3"/>
+    <circle cx="450" cy="100" r="8"
+            fill="#2A1F33"
+            opacity="0.3"/>
+
+    <!-- Dimensions -->
+    <text x="300" y="12"
+          fill="#6B5437"
+          font-family="sans-serif"
+          font-size="11"
+          text-anchor="middle"
+          font-weight="bold">
+        60cm × 20cm TRAINING BOARD
+    </text>
+
+    <text x="300" y="198"
+          fill="#6B5437"
+          font-family="sans-serif"
+          font-size="9"
+          text-anchor="middle"
+          opacity="0.7">
+        Example grips shown • Click to place your own
+    </text>
+</svg>
