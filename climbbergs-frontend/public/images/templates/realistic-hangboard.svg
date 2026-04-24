@@ -1,0 +1,79 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Concrete/Stone texture -->
+        <pattern id="concreteTexture" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+            <rect width="200" height="200" fill="#D4D4CE"/>
+            <!-- Noise/grain effect -->
+            <circle cx="10" cy="15" r="1.5" fill="#B8B8B0" opacity="0.3"/>
+            <circle cx="45" cy="30" r="2" fill="#A8A8A0" opacity="0.2"/>
+            <circle cx="80" cy="50" r="1" fill="#C8C8C0" opacity="0.4"/>
+            <circle cx="120" cy="75" r="1.5" fill="#B0B0A8" opacity="0.3"/>
+            <circle cx="160" cy="95" r="2" fill="#ACACA4" opacity="0.2"/>
+            <circle cx="35" cy="120" r="1" fill="#C0C0B8" opacity="0.4"/>
+            <circle cx="90" cy="145" r="1.5" fill="#B4B4AC" opacity="0.3"/>
+            <circle cx="145" cy="170" r="2" fill="#A4A49C" opacity="0.2"/>
+            <circle cx="70" cy="185" r="1" fill="#BCBCB4" opacity="0.4"/>
+            <!-- Subtle cracks -->
+            <path d="M20,40 Q30,50 40,45" stroke="#9A9A92" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <path d="M100,80 Q110,90 120,85" stroke="#8E8E86" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <path d="M150,120 L160,140" stroke="#9A9A92" stroke-width="0.4" fill="none" opacity="0.2"/>
+        </pattern>
+
+        <!-- Shadow for depth -->
+        <radialGradient id="depthGradient">
+            <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+
+    <!-- Main concrete board -->
+    <rect width="600" height="200" fill="url(#concreteTexture)" rx="6"/>
+
+    <!-- Subtle border/bevel effect -->
+    <rect x="3" y="3" width="594" height="194"
+          fill="none"
+          stroke="#E8E8E0"
+          stroke-width="2"
+          rx="6"/>
+
+    <rect x="5" y="5" width="590" height="190"
+          fill="none"
+          stroke="#A0A098"
+          stroke-width="1"
+          rx="5"
+          opacity="0.5"/>
+
+    <!-- Mounting holes with realistic depth -->
+    <g id="mountHole">
+        <!-- Outer shadow -->
+        <circle cx="25" cy="25" r="6" fill="url(#depthGradient)"/>
+        <!-- Hole -->
+        <circle cx="25" cy="25" r="4.5" fill="#505048"/>
+        <!-- Inner shadow -->
+        <circle cx="25" cy="25" r="4" fill="#3A3A34"/>
+        <!-- Highlight -->
+        <circle cx="24" cy="24" r="1.5" fill="#707068" opacity="0.4"/>
+    </g>
+    <use href="#mountHole"/>
+    <use href="#mountHole" transform="translate(550, 0)"/>
+    <use href="#mountHole" transform="translate(0, 150)"/>
+    <use href="#mountHole" transform="translate(550, 150)"/>
+
+    <!-- Brand text embossed -->
+    <text x="300" y="15"
+          fill="#A8A8A0"
+          font-family="Arial, sans-serif"
+          font-size="10"
+          font-weight="bold"
+          text-anchor="middle"
+          opacity="0.6">
+        CLIMBBERGS CUSTOM BOARD
+    </text>
+
+    <!-- Center reference line (subtle) -->
+    <line x1="300" y1="10" x2="300" y2="190"
+          stroke="#B0B0A8"
+          stroke-width="1"
+          stroke-dasharray="4,4"
+          opacity="0.2"/>
+</svg>
